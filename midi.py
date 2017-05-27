@@ -77,6 +77,13 @@ korg_nano_control_map = [
  Button('Button 7 - Bottom'),
  Button('Button 8 - Bottom'),
  Button('Button 9 - Bottom'),
+ None, #42
+ None, #43
+ None, #44
+ Button('Button Play'), #45
+ Button('Button Stop'), #46
+ Button('Button Prev'), #47
+ Button('Button Next') #48
 ]
 
 def process_message(msg):
