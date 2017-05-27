@@ -241,7 +241,7 @@ class LineScrollEffect:
         return self.fb
 
     def set_speed(self, v):
-        self.speed = 0.5 + v * 10
+        self.speed = 0.5 + v * 40
 
     
 
