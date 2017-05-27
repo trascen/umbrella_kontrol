@@ -40,3 +40,34 @@ class LineScrollEffect:
 
     def set_speed(self, v):
         self.speed = 0.5 + v * 40
+
+class RunningPointEffect:
+    def __init__(self):
+
+        self.y = 0
+        self.x = 0
+        self.last_t = 0
+        self.speed = 0.5
+        self.fb = UmbrellaFB()
+
+    def update_and_get_fb(self, ts):
+        dt = ts - self.last_t
+        if dt < 1:
+            return self.fb
+
+        while dt >= 1:
+            dt -= 1
+            self.x += 1
+            if self.x > 2:
+                self.x = 0
+                self.y += 1
+            if self.y > 3:
+                self.y = 0
+
+        self.fb.clear(0,0,0,0,0)
+        self.fb.draw(self.x, self.y, 255,255,255,0,0)
+        self.last_t = ts
+        return self.fb
+
+    def set_speed(self, v):
+        self.speed = 0.5 + v * 40

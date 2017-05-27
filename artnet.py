@@ -30,12 +30,8 @@ class ArtNet:
         self.seq = (self.seq + 1) % 256
 
     def sendfb(self, fb):
-        reordered = [
-            fb.fb[0], fb.fb[1], fb.fb[2],
-            fb.fb[5], fb.fb[4], fb.fb[3],
-            fb.fb[6], fb.fb[7], fb.fb[8],
-            fb.fb[11], fb.fb[10], fb.fb[9],
-        ]
-        buf = bytearray(fb.fb)
+        reordered = fb.fb[0:5] + fb.fb[5:10] + fb.fb[10:15] + fb.fb[25:30] + fb.fb[20:25] + fb.fb[15:20] + fb.fb[30:35] + fb.fb[35:40] + fb.fb[40:45] + fb.fb[55:60] + fb.fb[50:55] + fb.fb[45:50]
+
+        buf = bytearray(reordered)
         self.sock.sendto(self.hdr + pack(">B", self.seq) + b'\x00' + pack("<H", self.universe) + pack(">H", len(buf)) + buf, (self.dst, self.port))
         self.seq = (self.seq + 1) % 256
