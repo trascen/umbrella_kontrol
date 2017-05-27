@@ -251,7 +251,7 @@ class Streamer(threading.Thread):
         super().__init__()
         self.an = ArtNet("10.20.255.255")
         self.draw = draw
-        self.ms_wait = 40
+        self.ms_wait = 1000/40
         self.effects = []
         self.fb = UmbrellaFB()
 
