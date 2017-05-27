@@ -14,7 +14,6 @@ rainbow = RainbowEffect()
 #streamer.effects.append(hsvfill)
 streamer.effects.append(rainbow)
 
-#streamer.start()
 
 register_control_callback('Knob 1', lambda v: hsvfill.set_h(v))
 register_control_callback('Knob 2', lambda v: hsvfill.set_s(v))
@@ -27,9 +26,5 @@ register_control_callback('Button Prev', lambda v: bw.send_prev(v))
 register_control_callback('Button Next', lambda v: bw.send_next(v))
 register_control_callback('Button Stop', lambda v: bw.send_blank(v))
 
-
-
-
-
-
+streamer.start()
 listen_to_kontrol()
