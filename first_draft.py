@@ -233,7 +233,7 @@ class LineScrollEffect:
 
     def update_and_get_fb(self, ts):
         dt = ts - self.last_t
-        self.y = (self.y + dt*self.speed ) % 3
+        self.y = (self.y + dt*self.speed ) % 4
         self.fb.clear(0,0,0,0,0)
         for x in range(0,3):
             self.fb.draw(x, int(self.y), 255,255,255,0,0)
